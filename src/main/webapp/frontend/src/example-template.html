@@ -1,0 +1,42 @@
+<!-- Dependency resources -->
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../bower_components/vaadin-dropdown-menu/src/vaadin-dropdown-menu.html">
+
+<!-- Defines the example-template element -->
+<dom-module id="example-template">
+    <template>
+        <vaadin-dropdown-menu>
+            <template>
+                <vaadin-list-box>
+                    <template is="dom-repeat" items="{{employees}}">
+                        <vaadin-item>{{item.first}} {{item.last}}</vaadin-item>
+                    </template>
+                </vaadin-list-box>
+            </template>
+        </vaadin-dropdown-menu>
+    </template>
+
+    <!-- Polymer boilerplate to register the example-template element -->
+    <script>
+        class ExampleTemplate extends Polymer.Element {
+            static get is() {
+                return 'example-template'
+            }
+
+            static get properties() {
+                return {
+                    employees: {
+                        type: Array,
+                        value() {
+                            return [
+                                {first: 'Bob', last: 'Smith'},
+                                {first: 'Sally', last: 'Johnson'},
+                            ];
+                        }
+                    }
+                }
+            }
+        }
+        customElements.define(ExampleTemplate.is, ExampleTemplate);
+    </script>
+</dom-module>
